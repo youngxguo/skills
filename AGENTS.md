@@ -6,8 +6,8 @@
 - keep `agents/openai.yaml` aligned with the skill.
 - validate every changed skill with the skill creator's `quick_validate.py`.
 
-## installing
+## distribution
 
-- use `python3 install.py` to link every skill for Codex and Claude.
-- keep installation idempotent and refuse to replace paths the repo does not own.
-- add or update installer tests when installation behavior changes.
+- distribute skills through the Skills Marketplace and its `npx skills` CLI.
+- keep `npx skills add . --list` able to discover every skill in the repository.
+- use `npx skills add youngxguo/skills --global --agent codex claude-code --skill '*' --yes` to install every skill for Codex and Claude Code.
