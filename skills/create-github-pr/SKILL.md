@@ -1,30 +1,11 @@
 ---
 name: create-github-pr
-description: Review a Git branch, verify its commits and diff, push it, and open a focused GitHub pull request. Use when asked to create, open, submit, or publish a pull request or PR from the current repository.
+description: Open a focused, ready-for-review GitHub pull request with a concise lowercase title and body. Use when asked to create, open, submit, or publish a pull request or PR from the current repository.
 ---
 
-# create github pr
+Open the pull request ready for review. Create a draft only when explicitly requested.
 
-Open one focused pull request from the current branch and make it ready for review immediately so automated review can pick it up. Create a draft only when the user explicitly requests one.
-
-## inspect
-
-- Read the repository instructions and contribution conventions.
-- Inspect the current branch, worktree status, remotes, upstream, and existing pull requests for the branch.
-- Determine the intended base from the request or repository default.
-- Fetch the relevant remote, then review the commits and complete diff from the merge base through `HEAD`.
-- Stop if the branch includes unrelated commits or the intended base is unclear.
-
-## prepare
-
-- If intended changes are uncommitted, use `$create-git-commit` to inspect, verify, stage, and commit them. Keep unrelated worktree changes out of the pull request.
-- Run checks appropriate to the changed behavior and repository guidance.
-- Review the final diff for accidental, generated, sensitive, or unrelated content.
-- Do not rewrite published history or force-push unless explicitly requested.
-
-## write
-
-Follow the repository's title and body conventions. When it does not define a title format, reuse or adapt the commit title when it accurately summarizes the entire pull request. Otherwise, write a short, specific title with lowercase, imperative wording and no trailing punctuation.
+Follow the repository's pull request template and title conventions. When none are defined, reuse or adapt the commit title when it accurately summarizes the entire pull request. Otherwise, follow the title format and writing rules from `$create-git-commit`.
 
 Write a concise body:
 
@@ -38,13 +19,4 @@ Write a concise body:
 - <validation performed>
 ```
 
-Mention meaningful risks or follow-up work without inventing details. Use the repository's pull request template when one exists.
-
-## publish
-
-- Push the current branch to the appropriate remote and set its upstream when needed.
-- Open the pull request ready for review immediately. Do not create a draft unless the user explicitly requests one.
-- Set the intended base and head explicitly when repository or remote ambiguity exists.
-- If a pull request already exists for the branch, return it instead of creating a duplicate.
-- Verify the resulting pull request's URL, title, base, head, and state.
-- Report the URL, checks run, and any remaining uncommitted changes.
+Keep the summary to what changed and why. List only checks actually performed. Mention risks or follow-up work only when meaningful.
